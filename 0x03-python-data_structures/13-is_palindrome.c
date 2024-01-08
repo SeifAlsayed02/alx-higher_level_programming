@@ -1,38 +1,39 @@
-#include <stdio.h>
 #include "lists.h"
 /**
- * is_palindrome - Check if a singly linked list is a palindrome.
- * @head: Pointer to the head of the linked list.
+ * check_palindrome - check palindrome in singly linked list
+ * @left: head
+ * @right:end
  *
+ * Return: 1 if palindrome, 0 otherwise
+ **/
+int check_palindrome(listint_t **left, listint_t *right)
+{
+	int pal = 0;
+
+	if (!right)
+		return (1);
+
+	pal = check_palindrome(left, right->next);
+	if (pal == 0)
+		return (0);
+
+	pal = (*left)->n == right->n;
+	*left = (*left)->next;
+
+	return (pal);
+}
+
+/**
+ * is_palindrome - check if linked list is a palindrome
+ * @head: head to linked list
  *
- * Return: 0 if not a palindrome, 1 if a palindrome.
+ * Return: 1 if palindrome, 0 otherwise
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *slow = *head, *fast = *head, *prev = NULL;
-
-	if (*head == NULL || (*head)->next == NULL)
+	if (!(*head) || !head)
 		return (1);
 
-	while (fast != NULL && fast->next != NULL)
-	{
-		fast = fast->next->next;
-		listint_t *next = slow->next;
-		slow->next = prev;
-		prev = slow;
-		slow = next;
-	}
 
-	if (fast != NULL)
-		slow = slow->next;
-
-	while (prev != NULL && slow != NULL)
-	{
-		if (prev->n != slow->n)
-			return (0);
-		prev = prev->next;
-		slow = slow->next;
-	}
-
-	return (1);
+	return (check_palindrome(head, *head));
 }
