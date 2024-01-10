@@ -1,6 +1,6 @@
-#!/usr/bin/python3
-import sys
+#!/usr/bin/python3s
 if __name__ == '__main__':
+    import sys
     args = sys.argv
     arg_len = len(args)
     if arg_len == 0:
