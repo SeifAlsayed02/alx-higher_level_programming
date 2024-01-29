@@ -1,0 +1,30 @@
+Import module:
+	>>> add_integer = __import__('0-add_integer').add_integer
+
+Testing default version:
+	>>> add_integer(8, 9)
+	17
+
+Testing default b value:
+	>>> add_integer(2)
+	100
+
+Testing float values:
+	>>> add_integer(6.2, 7.1)
+	13
+
+Testing a negative value:
+	>>> add_integer(-30)
+	68
+
+Testing a non numbers:
+	>>> add_integer('j', 6)
+	Traceback (most recent call last):
+	...
+	TypeError: a must be an integer
+
+Test b non numbers:
+	>>> add_integer(18, "seif")
+	Traceback (most recent call last):
+	...
+	TypeError: b must be an integer
