@@ -1,5 +1,5 @@
 #!/usr/bin/python3
+num = None
 def magic_string():
-    magic_string.counter = getattr(magic_string, 'counter', 0) + 1
-    return "BestSchool" + ", BestSchool" * (magic_string.counter - 1)
-
+    global num; num = 0 if n is None else num + 1
+    return 'Best School' + ', Best School' * num
